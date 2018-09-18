@@ -33,7 +33,7 @@ public class Space extends JPanel {
         hero = new Hero(600,480, Color.GREEN, 20, "Dude");
         enemy = new Enemy(50, 50, Color.RED, 20, "Enemy");
         timer = new Timer();
-        timer.scheduleAtFixedRate(new ScheduleTask(), 100, 100);
+        timer.scheduleAtFixedRate(new ScheduleTask(), 100, 25);
     }
     
     @Override
@@ -48,11 +48,16 @@ public class Space extends JPanel {
        enemy.draw(g);
        //g.dispose();
 }
+
+    private int geHeight() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     private class ScheduleTask extends TimerTask {
     
         @Override
         public void run() {
-            
+            wallCollissions(hero);
+            wallCollissions(enemy);
             hero.update();
             enemy.update();
             repaint();
@@ -97,10 +102,26 @@ public void drawStars (Graphics g) {
            //  break;
            
           //}
+        }  
+}
+    /**
+     * Makes the hero and enemy bounce off walls
+     */    
+    private void wallCollissions(Characters c) {
+        //walls = this.getWidth(), this.gtHeight(), 0
+        //where hero is = hero.getX(), hero.getY()
+        if (c.getX() <= 0 || hero.getX() + 20 >= this.getWidth() ) {
+            c.reverseX();
+            
         }
+        if (c.getY() <= 0 || hero.getY() + 20 >= this.geHeight() ) {
+            c.reverseY();
+        }
+                
+    }
 }
     
-}
+
     
 
      

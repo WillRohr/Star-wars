@@ -106,6 +106,7 @@ public class Characters {
      */
     public void reverseX() {
         //TODO Implement this method
+        x += size; 
     }
     
     /**
@@ -113,10 +114,13 @@ public class Characters {
      */
     public void reverseY() {
         //TODO Implement this method
+        x += size;
     }
     
     //Private Methods
-    private void grow() {  
+    private void grow() { 
+        
+        //size = (int) (Math.random()*10) - 4 ;
         size *= 1.05;
     }
         
